@@ -52,4 +52,12 @@ public partial class ViewParticipant : ContentPage
             }
         }
     }
+    private async void OnUserTapped(object sender, EventArgs e)
+    {
+        var user = (sender as StackLayout)?.BindingContext as User;
+        if (user != null)
+        {
+            await Navigation.PushAsync(new UserDetail(user));
+        }
+    }
 }

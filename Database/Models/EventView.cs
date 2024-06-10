@@ -13,6 +13,7 @@ namespace Database.Models
         public DateTime Date { get; set; }
         public string Location { get; set; }
         public string ImagePath { get; set; }
+        public TimeSpan Time { get; set; }
         public bool IsAdmin { get; set; }
         public bool IsNotAdmin => !IsAdmin;
 
@@ -24,6 +25,7 @@ namespace Database.Models
             Date = e.Date;
             Location = e.Location;
             ImagePath = e.ImagePath;
+            Time = e.Time;
             IsAdmin = isAdmin;
         }
     }

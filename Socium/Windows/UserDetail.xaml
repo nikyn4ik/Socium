@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Socium.Windows.UserDetail">
+    <VerticalStackLayout Padding="30" x:Name="stackLayout">
+        <StackLayout Padding="30">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Image Source="icon.png" WidthRequest="50" HeightRequest="50" VerticalOptions="Center" Margin="0,0,10,0" />
+                <Label Text='Муниципальное бюджетное учреждение "городской молодежный центр "Социум"'
+            FontSize="20"
+            TextColor="Black"
+            VerticalOptions="Center"/>
+            </StackLayout>
+        </StackLayout>
+        <StackLayout Padding="20">
+            <Label Text="{Binding FullName}" FontSize="20" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" Margin="0,0,0,10"/>
+            <Label Text="{Binding UserName}" FontSize="18" HorizontalOptions="CenterAndExpand" Margin="0,0,0,5"/>
+            <Label Text="{Binding Email}" FontSize="18" HorizontalOptions="CenterAndExpand" Margin="0,0,0,5"/>
+            <Label Text="{Binding PhoneNumber}" FontSize="18" HorizontalOptions="CenterAndExpand" Margin="0,0,0,5"/>
+            <Label Text="{Binding Description}" FontSize="18" HorizontalOptions="CenterAndExpand" Margin="0,0,0,5"/>
+        </StackLayout>
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,6 +1,7 @@
 ﻿using Database;
 using Socium.AddEdit;
 using Socium.Windows;
+using System.Diagnostics;
 
 namespace Socium
 {
@@ -12,6 +13,7 @@ namespace Socium
         {
             InitializeComponent();
             MainPage = new AppShell();
+            AppDomain.CurrentDomain.ProcessExit += OnAppExit;
         }
 
         protected override async void OnStart()
@@ -27,6 +29,31 @@ namespace Socium
             else
             {
                 MainPage = new Login(_context);
+            }
+        }
+
+        private void OnAppExit(object sender, EventArgs e)
+        {
+            KillProcess("sqlceip");
+            KillProcess("sqlservr");
+        }
+
+        private void KillProcess(string processName)
+        {
+            var processes = Process.GetProcessesByName(processName);
+            foreach (var process in processes)
+            {
+                try
+                {
+                    if (process.MainModule.FileName.Contains("MSSQLLocalDB"))
+                    {
+                        process.Kill();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Error killing process {processName}: {ex.Message}");
+                }
             }
         }
     }

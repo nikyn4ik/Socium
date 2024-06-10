@@ -13,6 +13,7 @@ namespace Database.Models
         public DateTime Date { get; set; }
         public string Location { get; set; }
         public string ImagePath { get; set; }
+        public TimeSpan Time { get; set; }
         public ICollection<UserEvent> UserEvents { get; set; }
         public ICollection<Review> Reviews { get; set; }
     }
