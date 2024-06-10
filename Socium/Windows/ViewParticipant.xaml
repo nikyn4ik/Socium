@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Socium.Windows.ViewParticipant">
+    <VerticalStackLayout Padding="30">
+        <StackLayout Padding="30">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Image Source="icon.png" WidthRequest="50" HeightRequest="50" VerticalOptions="Center" Margin="0,0,10,0" />
+                <Label Text='Муниципальное бюджетное учреждение "городской молодежный центр "Социум"'
+               FontSize="20"
+               TextColor="Black"
+               VerticalOptions="Center"/>
+            </StackLayout>
+            <Label Text="Участники мероприятия" FontSize="20" HorizontalOptions="Center" Margin="0,0,0,20"/>
+        </StackLayout>
+        <CollectionView x:Name="ParticipantsList" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                    <StackLayout Orientation="Horizontal" Padding="10">
+                        <Label Text="{Binding FullName}" VerticalOptions="CenterAndExpand" FontSize="18"/>
+                            <Button Text="Удалить" BackgroundColor="White" TextColor="#000099" FontSize="16" CommandParameter="{Binding .}" Clicked="OnRemoveP" HorizontalOptions="EndAndExpand"/>
+                    </StackLayout>
+                    <BoxView HeightRequest="1" Color="Black" HorizontalOptions="FillAndExpand"/>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>

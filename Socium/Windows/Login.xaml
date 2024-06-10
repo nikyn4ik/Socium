@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Socium.Windows.Login"
+             BackgroundColor="White">
+    <ScrollView>
+        <StackLayout Padding="30">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Image Source="icon.png" WidthRequest="50" HeightRequest="50" VerticalOptions="Center" Margin="0,0,10,0" />
+                <Label Text='Муниципальное бюджетное учреждение "городской молодежный центр "Социум"'
+                       FontSize="20"
+                       TextColor="Black"
+                       VerticalOptions="Center"/>
+            </StackLayout>
+
+            <Label Text="Логин" FontSize="18"/>
+            <Entry x:Name="LoginEntry" Placeholder="Введите логин" FontSize="18"/>
+
+            <Label Text="Пароль" FontSize="18" Margin="0,10,0,0"/>
+            <Entry x:Name="PasswordEntry" Placeholder="Введите пароль" IsPassword="True" FontSize="18"/>
+
+            <Button Text="Войти"
+                    FontSize="18"
+                    TextColor="White"
+                    BackgroundColor="#000099"
+                    Margin="0,20,0,0"
+                    Clicked="LoginB"/>
+
+            <Button Text="Нет аккаунта"
+                    FontSize="18"
+                    BackgroundColor="White"
+                    TextColor="Black"
+                    Margin="0,10,0,0"
+                    Clicked="RegisterB"/>
+            <Label x:Name="ErrorLabel" TextColor="Red" FontSize="18" IsVisible="False"/>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

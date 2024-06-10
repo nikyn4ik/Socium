@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Socium.Windows.EditProfile">
+    <ScrollView>
+        <VerticalStackLayout Padding="30">
+            <StackLayout Padding="30">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Image Source="icon.png" WidthRequest="50" HeightRequest="50" VerticalOptions="Center" Margin="0,0,10,0" />
+                    <Label Text='Муниципальное бюджетное учреждение "городской молодежный центр "Социум"'
+                           FontSize="20"
+                           TextColor="Black"
+                           VerticalOptions="Center"/>
+                </StackLayout>
+                <Label Text="Редактирование профиля" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" Margin="10,0"/>
+                <Image x:Name="UserPhoto" WidthRequest="100" HeightRequest="100" VerticalOptions="Center" Margin="0,10" />
+                <Button Text="Выбрать фотографию" Clicked="SelectImageB" />
+                <Entry x:Name="LastNameEntry" Placeholder="Фамилия" Margin="0,10"/>
+                <Entry x:Name="FirstNameEntry" Placeholder="Имя" Margin="0,10"/>
+                <Entry x:Name="MiddleNameEntry" Placeholder="Отчество" Margin="0,10"/>
+                <Entry x:Name="UserEmail" Placeholder="Почта" Margin="0,10"/>
+                <Entry x:Name="UserPhone" Placeholder="Телефон" Margin="0,10"/>
+                <Entry x:Name="UserLogin" Placeholder="Логин" Margin="0,10"/>
+                <Entry x:Name="UserPassword" Placeholder="Пароль" IsPassword="True" Margin="0,10"/>
+                <Editor x:Name="UserDescription" Placeholder="Описание" HeightRequest="100" Margin="0,10"/>
+                <Button Text="Сохранить" Clicked="OnSaveB" BackgroundColor="#000099" TextColor="White" Margin="0,10"/>
+            </StackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

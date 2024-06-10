@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Socium.AddEdit.CreateAdmin">
+    <ScrollView>
+        <StackLayout Padding="30">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Image Source="icon.png" WidthRequest="50" HeightRequest="50" VerticalOptions="Center" Margin="0,0,10,0" />
+                <Label Text='Муниципальное бюджетное учреждение "городской молодежный центр "Социум"'
+                       FontSize="20"
+                       TextColor="Black"
+                       VerticalOptions="Center"/>
+            </StackLayout>
+            <VerticalStackLayout>
+                <Entry x:Name="LastNameEntry" Placeholder="Фамилия"/>
+                <Entry x:Name="FirstNameEntry" Placeholder="Имя"/>
+                <Entry x:Name="MiddleNameEntry" Placeholder="Отчество"/>
+                <Entry x:Name="EmailEntry" Placeholder="Email"/>
+                <Entry x:Name="PhoneNumberEntry" Placeholder="Телефон"/>
+                <Entry x:Name="LoginEntry" Placeholder="Логин"/>
+                <Entry x:Name="PasswordEntry" Placeholder="Пароль" IsPassword="True"/>
+                <Entry x:Name="ConfirmPasswordEntry" Placeholder="Подтвердите пароль" IsPassword="True"/>
+                <Button Text="Создание администратора" FontSize="18" TextColor="White" BackgroundColor="#000099" Clicked="CreateAdminB"/>
+            </VerticalStackLayout>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

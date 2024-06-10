@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:Database.Models;assembly=Database"
+             x:Class="Socium.Windows.Menu">
+    <ScrollView>
+        <VerticalStackLayout Padding="30">
+            <StackLayout Padding="30">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Image Source="icon.png" WidthRequest="50" HeightRequest="50" VerticalOptions="Center" Margin="0,0,10,0" />
+                    <Label Text='Муниципальное бюджетное учреждение "городской молодежный центр "Социум"'
+                           FontSize="20"
+                           TextColor="Black"
+                           VerticalOptions="Center"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="End" Margin="10,0">
+                    <Image x:Name="UserPhoto" WidthRequest="50" HeightRequest="50" VerticalOptions="Center" Margin="0,0,10,0" />
+                    <Label x:Name="UserFullNameLabel" FontSize="16" TextColor="Black" VerticalOptions="Center" Text="{Binding FullName}"  Margin="0,0,10,0">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnProfileB" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+            </StackLayout>
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Center" Padding="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Image Source="search_icon.png"
+                       WidthRequest="20"
+                       HeightRequest="20"
+                       VerticalOptions="Center"
+                       Margin="5,0,0,0" Grid.Column="0" />
+                <SearchBar x:Name="EventSearchBar"
+                           Placeholder="Найти..."
+                           BackgroundColor="#bde5f0"
+                           TextColor="Black"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="Center"
+                           Grid.Column="1" 
+                           TextChanged="SearchEvents"/>
+
+                <Button Text="Добавить мероприятие" 
+                        IsVisible="{Binding IsAdmin}" 
+                        Clicked="OnAddEventClicked" 
+                        BackgroundColor="#000099" 
+                        FontSize="16" 
+                        HorizontalOptions="End" 
+                        Margin="10,0,10,0" 
+                        Grid.Column="2"/>
+            </Grid>
+
+            <CollectionView x:Name="EventList" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" IsVisible="True">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:EventView">
+                        <Grid Margin="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Image Source="{Binding ImagePath}" Aspect="AspectFit" HeightRequest="300" Grid.RowSpan="2" Grid.Column="0" />
+
+                            <StackLayout Grid.Row="0" Grid.Column="1" Margin="10">
+                                <Label Text="{Binding Title}" FontSize="28" FontAttributes="Bold" />
+                                <Label Text="{Binding Description}" FontSize="18" />
+                                <Label Text="{Binding Date, StringFormat='Дата: {0:dd MMM yyyy}'}" FontSize="18" />
+                                <Label Text="{Binding Location, StringFormat='Место: {0}'}" FontSize="18" />
+                            </StackLayout>
+                            <StackLayout Grid.Row="1" Grid.Column="1" Orientation="Horizontal" Margin="10" VerticalOptions="End">
+                                <Button Text="Откликнуться" Clicked="RegisterB" IsVisible="{Binding IsNotAdmin}" BackgroundColor="#000099" FontSize="16" HorizontalOptions="FillAndExpand" Margin="0,0,5,0" />
+                                <Button Text="Оставить отзыв" Clicked="LeaveFeedbackB" IsVisible="{Binding IsNotAdmin}" BackgroundColor="#000099" FontSize="16" HorizontalOptions="FillAndExpand" Margin="0,0,5,0" />
+                                <Button Text="Редактировать" Clicked="EditEventB" IsVisible="{Binding IsAdmin}" BackgroundColor="#000099" FontSize="16" HorizontalOptions="FillAndExpand" Margin="0,0,5,0" />
+                                <Button Text="Участники" Clicked="ViewParticipantsB" IsVisible="{Binding IsAdmin}" BackgroundColor="#000099" FontSize="16" HorizontalOptions="FillAndExpand" Margin="0,0,5,0" />
+                                <Button Text="Отзывы" Clicked="ViewFeedbacksB" IsVisible="{Binding IsAdmin}" BackgroundColor="#000099" FontSize="16" HorizontalOptions="FillAndExpand" Margin="0,0,5,0" />
+                                <Button Text="Удалить" Clicked="DeleteEventB" IsVisible="{Binding IsAdmin}" BackgroundColor="#ff0000" FontSize="16" HorizontalOptions="FillAndExpand" Margin="0,0,0,0" />
+                            </StackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Socium.AddEdit.AddFeedback">
+    <ScrollView>
+        <StackLayout Padding="30">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Image Source="icon.png" WidthRequest="50" HeightRequest="50" VerticalOptions="Center" Margin="0,0,10,0" />
+                <Label Text='Муниципальное бюджетное учреждение "городской молодежный центр "Социум"'
+                FontSize="20"
+                TextColor="Black"
+                VerticalOptions="Center"/>
+            </StackLayout>
+            <VerticalStackLayout Padding="20">
+        <Label Text="Оцените мероприятие от 1 до 5:"
+               FontSize="16"
+               VerticalOptions="CenterAndExpand" />
+                <Slider x:Name="Ratings"
+                Minimum="1"
+                Maximum="5"
+                Value="1"
+                VerticalOptions="CenterAndExpand" />
+                <Label Text="{Binding Source={x:Reference Ratings}, Path=Value, StringFormat='{0:F1}'}"
+               FontSize="14"
+               VerticalOptions="CenterAndExpand" />
+        <Label Text="Что понравилось:"
+               FontSize="16"
+               VerticalOptions="CenterAndExpand" />
+        <Editor x:Name="Like"
+                HeightRequest="100"
+                Placeholder="Напишите, что понравилось"
+                VerticalOptions="CenterAndExpand" />
+        <Label Text="Что можно было бы улучшить:"
+               FontSize="16"
+               VerticalOptions="CenterAndExpand" />
+        <Editor x:Name="Improvement"
+                HeightRequest="100"
+                Placeholder="Напишите, что можно улучшить"
+                VerticalOptions="CenterAndExpand" />
+        <Button Text="Оставить отзыв"
+                Clicked="LeaveFeedbackB"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="FillAndExpand" />
+    </VerticalStackLayout>
+    </StackLayout>
+    </ScrollView>
+</ContentPage>

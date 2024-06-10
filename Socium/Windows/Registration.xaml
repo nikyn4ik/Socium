@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Socium.Windows.Registration"
+             BackgroundColor="White">
+    <ScrollView>
+        <StackLayout Padding="30">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Image Source="icon.png" WidthRequest="50" HeightRequest="50" VerticalOptions="Center" Margin="0,0,10,0" />
+                <Label Text='Муниципальное бюджетное учреждение "городской молодежный центр "Социум"'
+                   FontSize="20"
+                   TextColor="Black"
+                   VerticalOptions="Center"/>
+            </StackLayout>
+
+            <Label Text="Регистрация"
+                   HorizontalOptions="Center"
+                   FontSize="24"
+                   TextColor="Black"
+                   FontAttributes="Bold"
+                   Margin="0,0,0,30"/>
+
+            <Label Text="Фамилия" FontSize="18"/>
+            <Entry x:Name="LastNameEntry" Placeholder="Введите фамилию" FontSize="18"/>
+
+            <Label Text="Имя" FontSize="18" Margin="0,10,0,0"/>
+            <Entry x:Name="FirstNameEntry" Placeholder="Введите имя" FontSize="18"/>
+
+            <Label Text="Отчество" FontSize="18" Margin="0,10,0,0"/>
+            <Entry x:Name="MiddleNameEntry" Placeholder="Введите отчество" FontSize="18"/>
+
+            <Label Text="Адрес электронной почты" FontSize="18" Margin="0,10,0,0"/>
+            <Entry x:Name="EmailEntry" Placeholder="Введите email" Keyboard="Email" FontSize="18"/>
+
+            <Label Text="Номер телефона" FontSize="18" Margin="0,10,0,0"/>
+            <Entry x:Name="PhoneNumberEntry" Placeholder="Введите номер телефона" Keyboard="Telephone" FontSize="18"/>
+
+            <Label Text="Логин" FontSize="18" Margin="0,10,0,0"/>
+            <Entry x:Name="LoginEntry" Placeholder="Введите логин" FontSize="18"/>
+
+            <Label Text="Пароль" FontSize="18" Margin="0,10,0,0"/>
+            <Entry x:Name="PasswordEntry" Placeholder="Введите пароль" IsPassword="True" FontSize="18"/>
+
+            <Label Text="Подтверждение пароля" FontSize="18" Margin="0,10,0,0"/>
+            <Entry x:Name="ConfirmPasswordEntry" Placeholder="Введите пароль еще раз" IsPassword="True" FontSize="18"/>
+
+            <Button Text="Зарегистрироваться"
+                    FontSize="18"
+                    TextColor="White"
+                    BackgroundColor="#000099"
+                    Margin="0,20,0,0"
+                    Clicked="RegisterB"/>
+        <Label x:Name="ErrorLabel" TextColor="Red" FontSize="18" IsVisible="False"/>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
