@@ -1,5 +1,10 @@
 using Database;
 using Database.Models;
+using System.Globalization;
+using System.IO;
+using System.Threading.Tasks;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui.Controls.Xaml;
 
 namespace Socium.AddEdit
 {
@@ -78,6 +83,7 @@ namespace Socium.AddEdit
                     Title = NameEntry.Text,
                     Description = DescriptionEditor.Text,
                     Date = DatePicker.Date,
+                    Time = TimePicker.Time,
                     Location = LocationEntry.Text,
                     ImagePath = _selectedImagePath
                 };
@@ -87,8 +93,7 @@ namespace Socium.AddEdit
                 EventAdded?.Invoke(this, newEvent);
                 await DisplayAlert("Успех", "Мероприятие добавлено", "OK");
                 await Navigation.PopAsync();
-            
-            }}
+            }
         }
+    }
 }
-

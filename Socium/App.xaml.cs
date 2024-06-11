@@ -2,6 +2,7 @@
 using Socium.AddEdit;
 using Socium.Windows;
 using System.Diagnostics;
+using System.Globalization;
 
 namespace Socium
 {
@@ -12,6 +13,10 @@ namespace Socium
         public App()
         {
             InitializeComponent();
+
+            var culture = new CultureInfo("ru-RU");
+            CultureInfo.DefaultThreadCurrentCulture = culture;
+            CultureInfo.DefaultThreadCurrentUICulture = culture;
             MainPage = new AppShell();
             AppDomain.CurrentDomain.ProcessExit += OnAppExit;
         }
