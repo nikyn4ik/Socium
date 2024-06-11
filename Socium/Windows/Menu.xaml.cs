@@ -109,7 +109,21 @@ namespace Socium.Windows
                 }
             }
         }
+        private void OnEventUpdated(object sender, Event updatedEvent)
+        {
+            var eventView = Events.FirstOrDefault(ev => ev.Id == updatedEvent.Id);
+            if (eventView != null)
+            {
+                eventView.Title = updatedEvent.Title;
+                eventView.Description = updatedEvent.Description;
+                eventView.Date = updatedEvent.Date;
+                eventView.Location = updatedEvent.Location;
+                eventView.ImagePath = updatedEvent.ImagePath;
 
+                EventList.ItemsSource = null;
+                EventList.ItemsSource = Events;
+            }
+        }
         private async void EditEventB(object sender, EventArgs e)
         {
             var button = sender as Button;
@@ -121,7 +135,9 @@ namespace Socium.Windows
                     var eventEntity = await context.Events.FindAsync(eventItem.Id);
                     if (eventEntity != null)
                     {
-                        await Navigation.PushAsync(new EditEvent(eventEntity));
+                        var editEventPage = new EditEvent(eventEntity);
+                        editEventPage.EventUpdated += OnEventUpdated;
+                        await Navigation.PushAsync(editEventPage);
                     }
                 }
             }

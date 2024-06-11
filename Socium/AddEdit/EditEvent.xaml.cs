@@ -7,6 +7,8 @@ namespace Socium.AddEdit
     {
         private Event _event;
 
+        public event EventHandler<Event> EventUpdated;
+
         public EditEvent(Event eventEntity)
         {
             InitializeComponent();
@@ -57,9 +59,11 @@ namespace Socium.AddEdit
                     eventToUpdate.Description = DescriptionEditor.Text;
                     eventToUpdate.Date = DatePicker.Date;
                     eventToUpdate.Location = LocationEntry.Text;
+                    eventToUpdate.ImagePath = _event.ImagePath;
 
                     context.Events.Update(eventToUpdate);
                     await context.SaveChangesAsync();
+                    EventUpdated?.Invoke(this, _event);
                     await DisplayAlert("Успех", "Изменения сохранены", "OK");
                     await Navigation.PopAsync();
                 }
