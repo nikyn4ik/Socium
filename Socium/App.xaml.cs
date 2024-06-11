@@ -17,6 +17,9 @@ namespace Socium
             var culture = new CultureInfo("ru-RU");
             CultureInfo.DefaultThreadCurrentCulture = culture;
             CultureInfo.DefaultThreadCurrentUICulture = culture;
+
+            _context = new ApplicationContext();
+
             MainPage = new AppShell();
             AppDomain.CurrentDomain.ProcessExit += OnAppExit;
         }
@@ -25,15 +28,22 @@ namespace Socium
         {
             base.OnStart();
 
-            await _context.InitializeRolesAsync();
-
-            if (!await _context.IsAdminUserExists())
+            if (_context != null)
             {
-                MainPage = new CreateAdmin(_context);
+                await _context.InitializeRolesAsync();
+
+                if (!await _context.IsAdminUserExists())
+                {
+                    MainPage = new CreateAdmin(_context);
+                }
+                else
+                {
+                    MainPage = new Login(_context);
+                }
             }
             else
             {
-                MainPage = new Login(_context);
+                Debug.WriteLine("Error: _context is null");
             }
         }
 
